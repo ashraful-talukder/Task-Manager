@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "project_header")
-public class ProjectHeader {
+public class ProjectHeaders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

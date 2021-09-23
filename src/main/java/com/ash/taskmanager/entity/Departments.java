@@ -3,14 +3,14 @@ package com.ash.taskmanager.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "section")
-public class Section {
+@Table(name = "department")
+public class Departments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "section_name")
-    private String sectionName;
+    @Column(name = "department_name")
+    private String departmentName;
 }
