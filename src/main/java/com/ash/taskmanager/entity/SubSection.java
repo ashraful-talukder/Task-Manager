@@ -11,5 +11,6 @@ public class SubSection {
     @Column(name = "id")
     private Long id;
 
-
+    @Column(name = "sub_section_name")
+    private String subSectionName;
 }
