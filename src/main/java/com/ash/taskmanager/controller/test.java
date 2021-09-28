@@ -10,7 +10,7 @@ public class test {
     @RequestMapping(path = "/")
     public String test(){
 
-        String message = "Hello Shahed";
+        String message = "Hello Ash";
         return message;
     }
 }
