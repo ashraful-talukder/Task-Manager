@@ -13,4 +13,9 @@ public class SubSections {
 
     @Column(name = "sub_section_name")
     private String subSectionName;
+
+    // relation mapping with section
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "section_id")
+    private Sections sections;
 }

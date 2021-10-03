@@ -13,4 +13,10 @@ public class Departments {
 
     @Column(name = "department_name")
     private String departmentName;
+
+
+    // relation mapping with OperatingUnits
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "operating_unit_id")
+    private OperatingUnits operatingUnits;
 }
