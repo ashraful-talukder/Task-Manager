@@ -4,6 +4,7 @@ import com.ash.taskmanager.entity.Departments;
 import com.ash.taskmanager.entity.OperatingUnits;
 import com.ash.taskmanager.entity.Sections;
 import com.ash.taskmanager.entity.SubSections;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,6 +36,7 @@ public class UserDetails {
     // relation mapping with Users
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private Users user;
 
 
