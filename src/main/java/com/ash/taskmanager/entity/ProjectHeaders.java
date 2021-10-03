@@ -1,11 +1,14 @@
 package com.ash.taskmanager.entity;
 
+import com.ash.taskmanager.authentication.UserDetails;
+import com.ash.taskmanager.enums.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -49,8 +52,42 @@ public class ProjectHeaders {
     @Column(name = "percentage_of_completed_project")
     private Double percentageOfCompletedProject;
 
-    @Column(name = "is_revocate_project")
-    private Boolean isRevocateProject = false;
+    @Column(name = "is_revoked_project")
+    private Boolean isRevokedProject = false;
+
+    @Column(name = "project_status")
+    @Enumerated(EnumType.STRING)
+    private Status projectStatus;
+
+
+    // mapping relation with weekends
+    @ManyToMany(fetch = FetchType.EAGER,
+                cascade = {CascadeType.DETACH,
+                            CascadeType.MERGE,
+                            CascadeType.PERSIST,
+                            CascadeType.REFRESH})
+    @JoinTable(name = "project_weekend",
+                joinColumns = @JoinColumn(name = "project_header_id"),
+                inverseJoinColumns = @JoinColumn(name = "weekends_id"))
+    private List<Weekends> weekends;
+
+
+    // mapping for fetch the details of project manager's information
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH})
+    @JoinColumn(name = "product_manager")
+    private UserDetails projectManger;
+
+
+    // mapping for fetch the details of product manager's or client's information
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,
+                                                    CascadeType.MERGE,
+                                                    CascadeType.PERSIST,
+                                                    CascadeType.REFRESH})
+    @JoinColumn(name = "product_manager")
+    private UserDetails productManager;
 
 
     // all argument constructor without id field
