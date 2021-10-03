@@ -37,4 +37,8 @@ public class Users {
         this.password = password;
         this.userRole = userRole;
     }
+
+    // bi-directional relation mapping with user_details
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private UserDetails userDetails;
 }
