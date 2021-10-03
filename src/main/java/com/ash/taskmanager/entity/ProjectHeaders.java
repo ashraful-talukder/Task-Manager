@@ -101,6 +101,14 @@ public class ProjectHeaders {
                 inverseJoinColumns = @JoinColumn(name = "user_details_id"))
     private List<UserDetails> tagPersons;
 
+
+    // mapping with the project lines
+    @OneToMany(mappedBy = "projectHeader",
+                fetch = FetchType.EAGER,
+                cascade = CascadeType.ALL)
+    private List<ProjectLines> projectLines;
+
+
     // all argument constructor without id field
     public ProjectHeaders(String projectName,
                           String projectDetails,
