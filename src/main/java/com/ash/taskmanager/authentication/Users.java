@@ -31,14 +31,15 @@ public class Users {
     private Boolean enabled = false;
 
 
-    // constructor without id field
+    // bi-directional relation mapping with user_details
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private UserDetails userDetails;
+
+
+    // all argument constructor without id field
     public Users(String username, String password, UserRole userRole) {
         this.username = username;
         this.password = password;
         this.userRole = userRole;
     }
-
-    // bi-directional relation mapping with user_details
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private UserDetails userDetails;
 }

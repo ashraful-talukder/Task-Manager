@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "section")
+@Table(name = "sections")
 public class Sections {
 
     @Id
@@ -26,4 +26,10 @@ public class Sections {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "departments_id")
     private Departments departments;
+
+
+    // all argument constructor without id field
+    public Sections(String sectionName) {
+        this.sectionName = sectionName;
+    }
 }

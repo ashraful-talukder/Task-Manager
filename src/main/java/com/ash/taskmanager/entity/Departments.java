@@ -1,9 +1,16 @@
 package com.ash.taskmanager.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
-@Table(name = "department")
+@Table(name = "departments")
 public class Departments {
 
     @Id
@@ -19,4 +26,10 @@ public class Departments {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "operating_unit_id")
     private OperatingUnits operatingUnits;
+
+
+    // all argument constructor without id field
+    public Departments(String departmentName) {
+        this.departmentName = departmentName;
+    }
 }

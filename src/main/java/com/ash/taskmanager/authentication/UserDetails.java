@@ -25,6 +25,9 @@ public class UserDetails {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "mobile")
+    private String mobile;
+
     @Column(name = "designation")
     private String designation;
 
@@ -69,4 +72,12 @@ public class UserDetails {
                                                     CascadeType.REFRESH})
     @JoinColumn(name = "sub_section_id")
     private SubSections subSection;
+
+
+    // all argument constructor without id field
+    public UserDetails(String name, String mobile, String designation) {
+        this.name = name;
+        this.mobile = mobile;
+        this.designation = designation;
+    }
 }
