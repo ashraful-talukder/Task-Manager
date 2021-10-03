@@ -90,6 +90,17 @@ public class ProjectHeaders {
     private UserDetails productManager;
 
 
+    // mapping to track tagged persons
+    @ManyToMany(fetch = FetchType.EAGER,
+                cascade = {CascadeType.DETACH,
+                            CascadeType.MERGE,
+                            CascadeType.PERSIST,
+                            CascadeType.REFRESH})
+    @JoinTable(name = "tagged_persons",
+                joinColumns = @JoinColumn(name = "project_header_id"),
+                inverseJoinColumns = @JoinColumn(name = "user_details_id"))
+    private List<UserDetails> tagPersons;
+
     // all argument constructor without id field
     public ProjectHeaders(String projectName,
                           String projectDetails,

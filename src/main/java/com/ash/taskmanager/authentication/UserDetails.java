@@ -1,15 +1,13 @@
 package com.ash.taskmanager.authentication;
 
-import com.ash.taskmanager.entity.Departments;
-import com.ash.taskmanager.entity.OperatingUnits;
-import com.ash.taskmanager.entity.Sections;
-import com.ash.taskmanager.entity.SubSections;
+import com.ash.taskmanager.entity.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -74,6 +72,19 @@ public class UserDetails {
                                                     CascadeType.REFRESH})
     @JoinColumn(name = "sub_section_id")
     private SubSections subSection;
+
+
+    // mapping to complete the tagged person table
+    @ManyToMany(fetch = FetchType.EAGER,
+                cascade = {CascadeType.DETACH,
+                            CascadeType.MERGE,
+                            CascadeType.PERSIST,
+                            CascadeType.REFRESH})
+    @JoinTable(name = "tagged_persons",
+            joinColumns = @JoinColumn(name = "user_details_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_header_id"))
+    @JsonIgnore
+    private List<ProjectHeaders> projectHeaders;
 
 
     // all argument constructor without id field
