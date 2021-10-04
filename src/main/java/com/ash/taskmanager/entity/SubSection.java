@@ -23,7 +23,10 @@ public class SubSection {
 
     // relation mapping with section
     @ManyToOne(fetch = FetchType.EAGER,
-                cascade = CascadeType.ALL)
+                cascade = {CascadeType.DETACH,
+                            CascadeType.MERGE,
+                            CascadeType.PERSIST,
+                            CascadeType.REFRESH})
     @JoinColumn(name = "section_id")
     private Section section;
 

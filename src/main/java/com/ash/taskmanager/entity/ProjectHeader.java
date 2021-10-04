@@ -77,8 +77,9 @@ public class ProjectHeader {
                 cascade = {CascadeType.DETACH,
                             CascadeType.MERGE,
                             CascadeType.PERSIST,
-                            CascadeType.REFRESH})
-    @JoinColumn(name = "product_manager")
+                            CascadeType.REFRESH},
+                orphanRemoval = true)
+    @JoinColumn(name = "project_manager")
     private UserDetails projectManger;
 
 
@@ -87,7 +88,8 @@ public class ProjectHeader {
                 cascade = {CascadeType.DETACH,
                             CascadeType.MERGE,
                             CascadeType.PERSIST,
-                            CascadeType.REFRESH})
+                            CascadeType.REFRESH},
+                orphanRemoval = true)
     @JoinColumn(name = "product_manager")
     private UserDetails productManager;
 
@@ -107,7 +109,8 @@ public class ProjectHeader {
     // mapping with the project lines
     @OneToMany(mappedBy = "projectHeader",
                 fetch = FetchType.EAGER,
-                cascade = CascadeType.ALL)
+                cascade = CascadeType.ALL,
+                orphanRemoval = true)
     private List<ProjectLine> projectLines;
 
 

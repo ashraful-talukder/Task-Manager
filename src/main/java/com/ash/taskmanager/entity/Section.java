@@ -1,10 +1,12 @@
 package com.ash.taskmanager.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,9 +26,20 @@ public class Section {
 
     // relation mapping with Department
     @ManyToOne(fetch = FetchType.EAGER,
-                cascade = CascadeType.ALL)
+                cascade = {CascadeType.DETACH,
+                            CascadeType.MERGE,
+                            CascadeType.PERSIST,
+                            CascadeType.REFRESH})
     @JoinColumn(name = "department_id")
     private Department department;
+
+
+    // mapping with department to delete child for deleted parent
+    @OneToMany(mappedBy = "section",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<SubSection> subSections;
 
 
     // all argument constructor without id field
