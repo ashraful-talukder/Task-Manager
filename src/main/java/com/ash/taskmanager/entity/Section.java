@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "sections")
-public class Sections {
+public class Section {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,13 +23,14 @@ public class Sections {
 
 
     // relation mapping with Department
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "departments_id")
-    private Departments departments;
+    @ManyToOne(fetch = FetchType.EAGER,
+                cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id")
+    private Department department;
 
 
     // all argument constructor without id field
-    public Sections(String sectionName) {
+    public Section(String sectionName) {
         this.sectionName = sectionName;
     }
 }

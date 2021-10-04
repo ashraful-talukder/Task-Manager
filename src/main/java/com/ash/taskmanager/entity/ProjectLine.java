@@ -13,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "project_line")
-public class ProjectLines {
+public class ProjectLine {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,7 +61,7 @@ public class ProjectLines {
                             CascadeType.PERSIST,
                             CascadeType.REFRESH})
     @JoinColumn(name = "project_header")
-    private ProjectHeaders projectHeader;
+    private ProjectHeader projectHeader;
 
 
     // mapping with Project Details to fetch resource person's information
@@ -81,21 +81,21 @@ public class ProjectLines {
                             CascadeType.PERSIST,
                             CascadeType.REFRESH})
     @JoinColumn(name = "prerequisite_no")
-    private ProjectLines prerequisite;
+    private ProjectLine prerequisite;
 
 
     // all argument constructor without id field
-    public ProjectLines(String taskName,
-                        Boolean isMilestone,
-                        Double duration,
-                        Double effort,
-                        Double confidence,
-                        Double slack,
-                        Double totalDuration,
-                        Date startDate,
-                        Date endDate,
-                        Boolean isPrerequisite,
-                        String message) {
+    public ProjectLine(String taskName,
+                       Boolean isMilestone,
+                       Double duration,
+                       Double effort,
+                       Double confidence,
+                       Double slack,
+                       Double totalDuration,
+                       Date startDate,
+                       Date endDate,
+                       Boolean isPrerequisite,
+                       String message) {
         this.taskName = taskName;
         this.isMilestone = isMilestone;
         this.duration = duration;

@@ -14,8 +14,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "project_headers")
-public class ProjectHeaders {
+@Table(name = "project_header")
+public class ProjectHeader {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -69,23 +69,25 @@ public class ProjectHeaders {
     @JoinTable(name = "project_weekend",
                 joinColumns = @JoinColumn(name = "project_header_id"),
                 inverseJoinColumns = @JoinColumn(name = "weekends_id"))
-    private List<Weekends> weekends;
+    private List<Weekend> weekends;
 
 
     // mapping for fetch the details of project manager's information
-    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH})
+    @OneToOne(fetch = FetchType.EAGER,
+                cascade = {CascadeType.DETACH,
+                            CascadeType.MERGE,
+                            CascadeType.PERSIST,
+                            CascadeType.REFRESH})
     @JoinColumn(name = "product_manager")
     private UserDetails projectManger;
 
 
     // mapping for fetch the details of product manager's or client's information
-    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,
-                                                    CascadeType.MERGE,
-                                                    CascadeType.PERSIST,
-                                                    CascadeType.REFRESH})
+    @OneToOne(fetch = FetchType.EAGER,
+                cascade = {CascadeType.DETACH,
+                            CascadeType.MERGE,
+                            CascadeType.PERSIST,
+                            CascadeType.REFRESH})
     @JoinColumn(name = "product_manager")
     private UserDetails productManager;
 
@@ -106,20 +108,20 @@ public class ProjectHeaders {
     @OneToMany(mappedBy = "projectHeader",
                 fetch = FetchType.EAGER,
                 cascade = CascadeType.ALL)
-    private List<ProjectLines> projectLines;
+    private List<ProjectLine> projectLines;
 
 
     // all argument constructor without id field
-    public ProjectHeaders(String projectName,
-                          String projectDetails,
-                          String productName,
-                          Date startDate,
-                          Date endDate,
-                          Integer totalMilestones,
-                          Integer completedMilestones,
-                          Integer totalTasks,
-                          Integer completedTasks,
-                          Double percentageOfCompletedProject) {
+    public ProjectHeader(String projectName,
+                         String projectDetails,
+                         String productName,
+                         Date startDate,
+                         Date endDate,
+                         Integer totalMilestones,
+                         Integer completedMilestones,
+                         Integer totalTasks,
+                         Integer completedTasks,
+                         Double percentageOfCompletedProject) {
         this.projectName = projectName;
         this.projectDetails = projectDetails;
         this.productName = productName;

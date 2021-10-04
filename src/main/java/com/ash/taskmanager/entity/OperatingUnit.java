@@ -10,8 +10,8 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "operating_units")
-public class OperatingUnits {
+@Table(name = "operating_unit")
+public class OperatingUnit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class OperatingUnits {
     private String operatingUnitName;
 
     // all argument constructor without id field
-    public OperatingUnits(String operatingUnitName) {
+    public OperatingUnit(String operatingUnitName) {
         this.operatingUnitName = operatingUnitName;
     }
 }

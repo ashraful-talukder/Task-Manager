@@ -18,8 +18,8 @@ public class Users {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "password")
     private String password;
@@ -32,13 +32,17 @@ public class Users {
 
 
     // bi-directional relation mapping with user_details
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
     private UserDetails userDetails;
 
 
     // all argument constructor without id field
-    public Users(String username, String password, UserRole userRole) {
-        this.username = username;
+    public Users(String email,
+                 String password,
+                 UserRole userRole) {
+        this.email = email;
         this.password = password;
         this.userRole = userRole;
     }

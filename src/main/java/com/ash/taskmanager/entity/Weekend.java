@@ -1,6 +1,6 @@
 package com.ash.taskmanager.entity;
 
-import com.ash.taskmanager.enums.Weekend;
+import com.ash.taskmanager.enums.Weekends;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "weekend")
-public class Weekends {
+public class Weekend {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Weekends {
 
     @Column(name = "weekend_day")
     @Enumerated(EnumType.STRING)
-    private Weekend weekendDay;
+    private Weekends weekendsDay;
 
 
     // mapping relation with project header
@@ -34,11 +34,11 @@ public class Weekends {
     @JoinTable(name = "project_weekend",
                 joinColumns = @JoinColumn(name = "weekends_id"),
                 inverseJoinColumns = @JoinColumn(name = "project_header_id"))
-    private List<ProjectHeaders> projectHeaders;
+    private List<ProjectHeader> projectHeaders;
 
 
     // all argument constructor without id field
-    public Weekends(Weekend weekendDay) {
-        this.weekendDay = weekendDay;
+    public Weekend(Weekends weekendsDay) {
+        this.weekendsDay = weekendsDay;
     }
 }

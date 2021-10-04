@@ -10,8 +10,8 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "departments")
-public class Departments {
+@Table(name = "department")
+public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,13 +23,14 @@ public class Departments {
 
 
     // relation mapping with OperatingUnits
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER,
+                cascade = CascadeType.ALL)
     @JoinColumn(name = "operating_unit_id")
-    private OperatingUnits operatingUnits;
+    private OperatingUnit operatingUnit;
 
 
     // all argument constructor without id field
-    public Departments(String departmentName) {
+    public Department(String departmentName) {
         this.departmentName = departmentName;
     }
 }

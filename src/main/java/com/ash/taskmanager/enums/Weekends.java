@@ -1,6 +1,6 @@
 package com.ash.taskmanager.enums;
 
-public enum Weekend {
+public enum Weekends {
     SATURDAY,
     SUNDAY,
     MONDAY,
