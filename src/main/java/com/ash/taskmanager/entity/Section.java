@@ -36,7 +36,7 @@ public class Section {
 
     // mapping with department to delete child for deleted parent
     @OneToMany(mappedBy = "section",
-            fetch = FetchType.EAGER,
+            fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     @JsonIgnore
     private List<SubSection> subSections;

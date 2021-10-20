@@ -80,7 +80,7 @@ public class UserDetails {
 
 
     // mapping to complete the tagged person table
-    @ManyToMany(fetch = FetchType.EAGER,
+    @ManyToMany(fetch = FetchType.LAZY,
                 cascade = {CascadeType.DETACH,
                             CascadeType.MERGE,
                             CascadeType.PERSIST,

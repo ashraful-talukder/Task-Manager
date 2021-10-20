@@ -61,7 +61,7 @@ public class ProjectHeader {
 
 
     // mapping relation with weekends
-    @ManyToMany(fetch = FetchType.EAGER,
+    @ManyToMany(fetch = FetchType.LAZY,
                 cascade = {CascadeType.DETACH,
                             CascadeType.MERGE,
                             CascadeType.PERSIST,
@@ -95,7 +95,7 @@ public class ProjectHeader {
 
 
     // mapping to track tagged persons
-    @ManyToMany(fetch = FetchType.EAGER,
+    @ManyToMany(fetch = FetchType.LAZY,
                 cascade = {CascadeType.DETACH,
                             CascadeType.MERGE,
                             CascadeType.PERSIST,
@@ -108,7 +108,7 @@ public class ProjectHeader {
 
     // mapping with the project lines
     @OneToMany(mappedBy = "projectHeader",
-                fetch = FetchType.EAGER,
+                fetch = FetchType.LAZY,
                 cascade = CascadeType.ALL,
                 orphanRemoval = true)
     private List<ProjectLine> projectLines;

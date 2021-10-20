@@ -36,7 +36,7 @@ public class Department {
 
     // mapping with department to delete child for deleted parent
     @OneToMany(mappedBy = "department",
-            fetch = FetchType.EAGER,
+            fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     @JsonIgnore
